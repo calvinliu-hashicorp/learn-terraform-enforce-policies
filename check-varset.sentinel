@@ -26,8 +26,8 @@ param tfc_api_key default "my_key_value"
 # Validate that the external system returns yes or maybe
 check_external_approval_system = func() {
   req = http.request("https://app.terraform.io/api/v2/organizations/calvin-tfc/workspaces/sentinel-tfc")
-  req = request.with_header("Authorization", "Bearer " + tfc_api_key)
-  req = request.with_header("Content-Type", "application/json")
+  req = req.with_header("Authorization", "Bearer " + tfc_api_key)
+  req = req.with_header("Content-Type", "application/json")
   res = json.unmarshal(http.get(req).body)
   answer = res.data.type
   print("answer:", answer)
