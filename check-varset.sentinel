@@ -1,5 +1,4 @@
-# This policy uses the Sentinel HTTP import to call an external API,
-# https://yesno.wtf/api that randomly returns "yes" or "no"
+# This policy uses the Sentinel HTTP import to call an API.
 # This simulates what a policy might do to check an external system
 # that has a JSON-based API in order to confirm that the run is
 # allowed to do an apply.
