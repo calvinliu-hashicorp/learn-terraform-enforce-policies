@@ -23,14 +23,14 @@ import "json"
 
 # Validate that the external system returns yes or maybe
 check_external_approval_system = func() {
-  req = http.request("https://yesno.wtf/api")
+  req = http.request("https://app.terraform.io/api/v2/organizations/calvin-tfc/workspaces/sentinel-tfc")
   res = json.unmarshal(http.get(req).body)
-  answer = res.answer
+  answer = res.data.type
   print("answer:", answer)
 
   case answer {
     # https://yesno.wtf/api returns "maybe" every 10,000th time
-    when "yes", "maybe":
+    when "workspaces", "maybe":
       return true
     when "no":
       return false
